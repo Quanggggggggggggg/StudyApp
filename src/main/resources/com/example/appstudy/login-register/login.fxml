@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.appstudy.Controller.LoginController"
+            stylesheets="@/com/example/appstudy/css/login.css"
+
+
+
+>
+
+    <!-- Toàn màn hình -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" prefWidth="400" prefHeight="400">
+            <children>
+                <!-- Card bo góc -->
+                <VBox spacing="15" alignment="CENTER" styleClass="card">
+                    <children>
+
+                        <!-- Logo hoặc ảnh -->
+                        <ImageView fitHeight="80" fitWidth="80">
+                            <image>
+<!--                                <Image url="@../images/logo.png"/>-->
+                            </image>
+                        </ImageView>
+
+                        <!-- Tiêu đề -->
+                        <Label text="Đăng nhập" styleClass="title"/>
+
+                        <!-- Ô nhập Email -->
+                        <TextField fx:id="txtEmail" promptText="Email"
+                                   maxWidth="250" styleClass="input-field"/>
+
+                        <!-- Ô nhập Password -->
+                        <PasswordField fx:id="txtPassword" promptText="Mật khẩu"
+                                       maxWidth="250" styleClass="input-field"/>
+
+                        <!-- Nút đăng nhập -->
+                        <Button text="Đăng nhập" onAction="#handleLogin"
+                                styleClass="button-primary" maxWidth="200"/>
+
+                        <!-- Link chuyển sang đăng ký -->
+                        <Hyperlink text="Chưa có tài khoản? Đăng ký ngay"
+                                   onAction="#goToRegister"/>
+                    </children>
+                    <padding>
+                        <Insets top="30" right="40" bottom="30" left="40"/>
+                    </padding>
+                </VBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
