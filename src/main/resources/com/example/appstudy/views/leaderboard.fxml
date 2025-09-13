@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.appstudy.Controller.LeaderboardController"
+            style="-fx-background-color: #f4f7f9;"
+            prefWidth="900" prefHeight="700">
+
+    <top>
+        <VBox style="-fx-padding: 20 25 15 25;">
+            <Button fx:id="backBtn" text="← Quay lại" onAction="#goBack" />
+            <Label text="🏆 Leaderboard"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="See how you stack up against other learners."
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 0 25 25 25;">
+
+            <!-- SECTION 1: BỘ LỌC THỜI GIAN -->
+            <HBox alignment="CENTER">
+                <ToggleButton fx:id="btnWeekly" text="Weekly" styleClass="leaderboard-toggle"/>
+                <ToggleButton fx:id="btnMonthly" text="Monthly" styleClass="leaderboard-toggle"/>
+                <ToggleButton fx:id="btnAllTime" text="All-Time" styleClass="leaderboard-toggle"/>
+            </HBox>
+
+            <!-- SECTION 2: BỤC VINH QUANG (TOP 3) -->
+            <HBox alignment="BOTTOM_CENTER" spacing="20" style="-fx-padding: 20 0;">
+                <!-- Rank 2 -->
+                <VBox alignment="CENTER" spacing="5">
+                    <StackPane>
+                        <Circle radius="35" style="-fx-fill: #bdc3c7;"/>
+                        <Label fx:id="lblTop2Avatar" text="JD" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    </StackPane>
+                    <Label fx:id="lblTop2Name" text="Jane Doe" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblTop2Xp" text="1850 XP" style="-fx-text-fill: #7f8c8d;"/>
+                    <Label text="🥈" style="-fx-font-size: 24px;"/>
+                </VBox>
+
+                <!-- Rank 1 -->
+                <VBox alignment="CENTER" spacing="5">
+                    <StackPane>
+                        <Circle radius="45" style="-fx-fill: #f1c40f;"/>
+                        <Label fx:id="lblTop1Avatar" text="JS" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    </StackPane>
+                    <Label fx:id="lblTop1Name" text="John Smith" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblTop1Xp" text="2100 XP" style="-fx-text-fill: #7f8c8d;"/>
+                    <Label text="🥇" style="-fx-font-size: 30px;"/>
+                </VBox>
+
+                <!-- Rank 3 -->
+                <VBox alignment="CENTER" spacing="5">
+                    <StackPane>
+                        <Circle radius="35" style="-fx-fill: #e67e22;"/>
+                        <Label fx:id="lblTop3Avatar" text="AS" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    </StackPane>
+                    <Label fx:id="lblTop3Name" text="Alex Smith" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="lblTop3Xp" text="1700 XP" style="-fx-text-fill: #7f8c8d;"/>
+                    <Label text="🥉" style="-fx-font-size: 24px;"/>
+                </VBox>
+            </HBox>
+
+            <!-- SECTION 3: THỨ HẠNG CỦA BẠN -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #e8f4fd; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #3498db; -fx-border-width: 1; -fx-border-radius: 8;">
+                <Label fx:id="lblUserRank" text="15" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <StackPane>
+                    <Circle radius="20" style="-fx-fill: #3498db;"/>
+                    <Label fx:id="lblUserAvatar" text="U" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+                </StackPane>
+                <Label fx:id="lblUserName" text="You" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label fx:id="lblUserXp" text="950 XP" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+            </HBox>
+
+            <!-- SECTION 4: DANH SÁCH CÁC HẠNG CÒN LẠI -->
+            <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" style="-fx-background-color: transparent; -fx-background: transparent;">
+                <VBox fx:id="vboxLeaderboardList" spacing="10">
+                    <!-- Các thẻ xếp hạng (rank cards) sẽ được thêm vào đây bằng code -->
+                    <!-- Example Rank Card -->
+                    <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8;">
+                        <Label text="4" style="-fx-font-size: 14px; -fx-font-weight: bold;" prefWidth="25"/>
+                        <StackPane>
+                            <Circle radius="20" style="-fx-fill: #95a5a6;"/>
+                            <Label text="MB" style="-fx-font-weight: bold; -fx-text-fill: white;"/>
+                        </StackPane>
+                        <Label text="Michael Brown" style="-fx-font-weight: bold;"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label text="1650 XP" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    </HBox>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.appstudy.Controller.PracticeTestController"
+            style="-fx-background-color: #f4f7f9;"
+            prefWidth="900" prefHeight="700">
+
+    <top>
+        <VBox style="-fx-padding: 20 25 15 25;">
+            <Button fx:id="backBtn" text="← Quay lại" onAction="#goBack" />
+            <Label text="🎯 Practice Hub"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Label text="Hone your skills with mock tests and AI-powered drills."
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="30" style="-fx-padding: 0 25 25 25;">
+
+                <!-- ======================================= -->
+                <!-- KHU VỰC 1: MOCK TESTS & SKILL PRACTICE  -->
+                <!-- ======================================= -->
+                <VBox spacing="15">
+                    <Label text="Full Mock Tests &amp; Skill Practice" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+
+                    <!-- Bộ lọc -->
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Filter by:" style="-fx-font-weight: bold;"/>
+                        <ComboBox fx:id="comboTestType" promptText="All Types"/>
+                        <ComboBox fx:id="comboTestLevel" promptText="All Levels"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="txtSearchTest" promptText="Search tests..."/>
+                    </HBox>
+
+                    <!-- Danh sách các bài test -->
+                    <VBox fx:id="vboxTestList" spacing="15">
+                        <!-- Các thẻ bài test (Test Cards) sẽ được thêm vào đây bằng code -->
+                        <!-- Example Test Card -->
+                        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                            <VBox>
+                                <Label text="🎧" style="-fx-font-size: 24px;"/>
+                            </VBox>
+                            <VBox HBox.hgrow="ALWAYS">
+                                <Label text="IELTS Cambridge 18 - Listening Test 1" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                                <Label text="Practice your listening skills with 4 sections and 40 questions. (40 mins)" style="-fx-text-fill: #7f8c8d; -fx-wrap-text: true;"/>
+                            </VBox>
+                            <Button text="Start Test" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                            <VBox>
+                                <Label text="📖" style="-fx-font-size: 24px;"/>
+                            </VBox>
+                            <VBox HBox.hgrow="ALWAYS">
+                                <Label text="IELTS Official - Full Mock Test 2024" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+                                <Label text="A complete test covering all 4 skills: Listening, Reading, Writing, and Speaking. (2h 45m)" style="-fx-text-fill: #7f8c8d; -fx-wrap-text: true;"/>
+                            </VBox>
+                            <Button text="Start Test" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- ======================================= -->
+                <!-- KHU VỰC 2: AI-POWERED DRILLS             -->
+                <!-- ======================================= -->
+                <VBox spacing="15">
+                    <Label text="AI-Powered Drills" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    <GridPane hgap="20" vgap="20">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="50.0"/>
+                            <ColumnConstraints percentWidth="50.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints/>
+                            <RowConstraints/>
+                        </rowConstraints>
+
+                        <!-- AI Writing Evaluation Card -->
+                        <VBox spacing="8" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <Label text="✍️ AI Writing Evaluation" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Get instant feedback on your essays. Our AI will check grammar, vocabulary, coherence, and estimate your band score." style="-fx-wrap-text: true; -fx-text-fill: #7f8c8d;"/>
+                            <Pane VBox.vgrow="ALWAYS"/>
+                            <Button text="Submit Your Essay" prefWidth="Infinity" onAction="#handleWritingEvaluation" style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        </VBox>
+
+                        <!-- AI Speaking Assessment Card -->
+                        <VBox spacing="8" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <Label text="🎤 AI Speaking Assessment" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Record your answers to common IELTS questions and get detailed analysis on your pronunciation, fluency, and grammar." style="-fx-wrap-text: true; -fx-text-fill: #7f8c8d;"/>
+                            <Pane VBox.vgrow="ALWAYS"/>
+                            <Button text="Start Speaking Test" prefWidth="Infinity" onAction="#handleSpeakingAssessment" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        </VBox>
+
+                        <!-- AI Vocabulary Game Card -->
+                        <VBox spacing="8" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <Label text="🎮 Word Sprint Game" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                            <Label text="Race against the clock to guess the word from its definition. A fun way to expand your vocabulary, with AI-powered hints." style="-fx-wrap-text: true; -fx-text-fill: #7f8c8d;"/>
+                            <Pane VBox.vgrow="ALWAYS"/>
+                            <Button text="Play Now" prefWidth="Infinity" onAction="#handleVocabularyGame" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                        </VBox>
+
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

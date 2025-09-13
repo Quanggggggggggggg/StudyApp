@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.appstudy.Controller.LearningPathController"
+      style="-fx-padding: 20;"
+      prefWidth="900" prefHeight="700"
+>
+    <Button fx:id="backBtn" text="← Quay lại" onAction="#goBack" />
+    <Label text="📘 Your IELTS Learning Path"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <!-- LEVEL 1: FOUNDATION (BAND 4.0 - 5.0) -->
+    <VBox spacing="5">
+        <Label text="LEVEL 1: FOUNDATION (Band 4.0 - 5.0)" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0; -fx-text-fill: #3498db;"/>
+
+        <VBox fx:id="lesson1Container" spacing="10">
+            <Button text="Lesson 1: Core Foundations" onAction="#handleToggle" userData="1" prefWidth="Infinity"/>
+            <VBox fx:id="lesson1Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Kiến thức nền tảng"/>
+                <Button text="Tổng quan kỳ thi IELTS &amp; cách tính điểm"/>
+                <Button text="Ngữ pháp thiết yếu (Tenses, Sentence Structure)"/>
+                <Button text="Từ vựng cốt lõi theo chủ đề quen thuộc"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson2Container" spacing="10">
+            <Button text="Lesson 2: Introduction to Skills" onAction="#handleToggle" userData="2" prefWidth="Infinity"/>
+            <VBox fx:id="lesson2Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Làm quen 4 kỹ năng"/>
+                <Button text="Nhận diện các dạng bài Listening cơ bản"/>
+                <Button text="Kỹ năng Reading: Skimming &amp; Scanning"/>
+                <Button text="Làm quen Speaking Part 1 &amp; Writing Task 1"/>
+            </VBox>
+        </VBox>
+    </VBox>
+
+    <!-- LEVEL 2: INTERMEDIATE (BAND 5.5 - 6.5) -->
+    <VBox spacing="5">
+        <Label text="LEVEL 2: INTERMEDIATE (Band 5.5 - 6.5)" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0; -fx-text-fill: #e67e22;"/>
+
+        <VBox fx:id="lesson3Container" spacing="10">
+            <Button text="Lesson 3: Listening Deep Dive" onAction="#handleToggle" userData="3" prefWidth="Infinity"/>
+            <VBox fx:id="lesson3Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Chiến thuật Listening"/>
+                <Button text="Chiến thuật cho Section 1 &amp; 2"/>
+                <Button text="Chiến thuật cho Section 3 &amp; 4"/>
+                <Button text="Luyện tập Note-taking &amp; Map Labelling"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson4Container" spacing="10">
+            <Button text="Lesson 4: Reading Strategies" onAction="#handleToggle" userData="4" prefWidth="Infinity"/>
+            <VBox fx:id="lesson4Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Chiến thuật Reading"/>
+                <Button text="Xử lý dạng True/False/Not Given &amp; Matching Headings"/>
+                <Button text="Xử lý dạng Multiple Choice &amp; Summary Completion"/>
+                <Button text="Quản lý thời gian hiệu quả"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson5Container" spacing="10">
+            <Button text="Lesson 5: Mastering Writing Task 1" onAction="#handleToggle" userData="5" prefWidth="Infinity"/>
+            <VBox fx:id="lesson5Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Chuyên sâu Writing Task 1"/>
+                <Button text="Phân tích &amp; mô tả biểu đồ (Graph, Chart, Table)"/>
+                <Button text="Mô tả quy trình (Process) &amp; bản đồ (Map)"/>
+                <Button text="Ngôn ngữ và cấu trúc học thuật"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson6Container" spacing="10">
+            <Button text="Lesson 6: Mastering Writing Task 2" onAction="#handleToggle" userData="6" prefWidth="Infinity"/>
+            <VBox fx:id="lesson6Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Chuyên sâu Writing Task 2"/>
+                <Button text="Phân tích các dạng đề Essay (Opinion, Discussion...)"/>
+                <Button text="Phát triển ý &amp; xây dựng dàn bài logic"/>
+                <Button text="Sử dụng từ nối &amp; liên kết câu"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson7Container" spacing="10">
+            <Button text="Lesson 7: Speaking Fluency &amp; Coherence" onAction="#handleToggle" userData="7" prefWidth="Infinity"/>
+            <VBox fx:id="lesson7Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Cải thiện kỹ năng Nói"/>
+                <Button text="Chiến thuật trả lời Speaking Part 1 &amp; 3"/>
+                <Button text="Cấu trúc bài nói Part 2 (Cue Card)"/>
+                <Button text="Tăng cường sự trôi chảy &amp; mạch lạc"/>
+            </VBox>
+        </VBox>
+    </VBox>
+
+    <!-- LEVEL 3: ADVANCED (BAND 7.0+) -->
+    <VBox spacing="5">
+        <Label text="LEVEL 3: ADVANCED (Band 7.0+)" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0; -fx-text-fill: #27ae60;"/>
+
+        <VBox fx:id="lesson8Container" spacing="10">
+            <Button text="Lesson 8: Advanced Language Skills" onAction="#handleToggle" userData="8" prefWidth="Infinity"/>
+            <VBox fx:id="lesson8Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Ngôn ngữ nâng cao"/>
+                <Button text="Sử dụng câu phức và cấu trúc đa dạng"/>
+                <Button text="Từ vựng học thuật (Collocations &amp; Idioms)"/>
+                <Button text="Cải thiện phát âm (Intonation &amp; Stress)"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson9Container" spacing="10">
+            <Button text="Lesson 9: Full Mock Tests" onAction="#handleToggle" userData="9" prefWidth="Infinity"/>
+            <VBox fx:id="lesson9Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Luyện đề tổng hợp"/>
+                <Button text="Làm bài thi thử Listening &amp; Reading"/>
+                <Button text="Luyện viết Writing Task 1 &amp; 2 trong 60 phút"/>
+                <Button text="Ghi âm và tự đánh giá bài nói"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="lesson10Container" spacing="10">
+            <Button text="Lesson 10: Final Review &amp; Tips" onAction="#handleToggle" userData="10" prefWidth="Infinity"/>
+            <VBox fx:id="lesson10Details" spacing="5" visible="false" managed="false" style="-fx-padding: 0 0 0 15;">
+                <Label text="📂 Topic: Tổng kết và chiến lược"/>
+                <Button text="Phân tích lỗi sai thường gặp"/>
+                <Button text="Chiến lược cho ngày thi"/>
+                <Button text="Duy trì tâm lý &amp; sự tự tin"/>
+            </VBox>
+        </VBox>
+    </VBox>
+
+</VBox>
