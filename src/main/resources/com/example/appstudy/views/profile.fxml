@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.appstudy.Controller.ProfileController"
+            style="-fx-background-color: #f4f7f9;"
+            prefWidth="900" prefHeight="700">
+
+
+    <center>
+
+        <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="25" style="-fx-padding: 25;">
+
+                <!-- ======================================= -->
+                <!-- KHU VỰC 1: THÔNG TIN CÁ NHÂN & AVATAR    -->
+                <!-- ======================================= -->
+                <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                    <Button fx:id="backBtn" text="← Quay lại" onAction="#goBack" />
+                    <StackPane>
+                        <Circle radius="45" style="-fx-fill: #3498db;"/>
+                        <!-- Thay 'JD' bằng ảnh thật nếu có -->
+                        <Label fx:id="lblAvatar" text="JD" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                    </StackPane>
+                    <VBox HBox.hgrow="ALWAYS">
+                        <Label fx:id="lblName" text="John Doe" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                        <Label fx:id="lblEmail" text="john.doe@example.com" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                    </VBox>
+                    <Button text="Edit Profile" style="-fx-background-color: #ecf0f1; -fx-text-fill: #34495e; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- ======================================= -->
+                <!-- KHU VỰC 2: BẢNG THỐNG KÊ (STATS CARDS)   -->
+                <!-- ======================================= -->
+                <GridPane hgap="20" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                    </columnConstraints>
+
+                    <!-- Stat Card 1: Total XP -->
+                    <VBox alignment="CENTER" spacing="8" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+                        <Label text="⚡" style="-fx-font-size: 24px;"/>
+                        <Label text="Total XP" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="lblXP" text="15,450" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    </VBox>
+
+                    <!-- Stat Card 2: Current Streak -->
+                    <VBox alignment="CENTER" spacing="8" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;" GridPane.columnIndex="1">
+                        <Label text="🔥" style="-fx-font-size: 24px;"/>
+                        <Label text="Current Streak" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="lblStreak" text="12 Days" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    </VBox>
+
+                    <!-- Stat Card 3: Words Learned -->
+                    <VBox alignment="CENTER" spacing="8" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;" GridPane.columnIndex="2">
+                        <Label text="📚" style="-fx-font-size: 24px;"/>
+                        <Label text="Words Learned" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="lblWordsLearned" text="256" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    </VBox>
+                </GridPane>
+
+                <!-- ======================================= -->
+                <!-- KHU VỰC 3: TIẾN ĐỘ CẤP ĐỘ               -->
+                <!-- ======================================= -->
+                <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Current Level:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblLevel" text="Intermediate (Band 5.5 - 6.5)" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #3498db;"/>
+                    </HBox>
+                    <ProgressBar fx:id="levelProgressBar" prefWidth="Infinity" progress="0.65" style="-fx-accent: #2ecc71;"/>
+                    <Label fx:id="lblProgressToNextLevel" text="450 / 700 XP to Advanced Level" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+                </VBox>
+
+                <!-- ======================================= -->
+                <!-- KHU VỰC 4: THÀNH TÍCH (ACHIEVEMENTS)    -->
+                <!-- ======================================= -->
+                <VBox spacing="15">
+                    <Label text="Achievements" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                    <FlowPane fx:id="achievementsFlowPane" hgap="15" vgap="15">
+                        <!-- Các huy hiệu sẽ được thêm vào đây bằng code -->
+                        <!-- Example Achievement Badge -->
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label text="🎯" style="-fx-font-size: 40px;"/>
+                            <Label text="Test Taker" style="-fx-font-size: 12px;"/>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label text="✍️" style="-fx-font-size: 40px;"/>
+                            <Label text="Essayist" style="-fx-font-size: 12px;"/>
+                        </VBox>
+                        <VBox alignment="CENTER" spacing="5" style="-fx-opacity: 0.3;">
+                            <Label text="🏆" style="-fx-font-size: 40px;"/>
+                            <Label text="Top 10" style="-fx-font-size: 12px;"/>
+                        </VBox>
+                    </FlowPane>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

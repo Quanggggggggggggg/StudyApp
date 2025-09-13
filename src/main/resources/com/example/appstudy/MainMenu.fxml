@@ -1,56 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.appstudy.Controller.MainMenuController">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.appstudy.Controller.MainMenuController"
+            style="-fx-background-color: #f4f7f9;"
+            prefWidth="900" prefHeight="700">
 
-    <!-- HEADER -->
     <top>
-        <HBox spacing="20" style="-fx-background-color: #f0f0f0;" alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
-            <children>
-                <Label text="📘 IELTS Master" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-                <Pane HBox.hgrow="ALWAYS"/>
-                <Label fx:id="avatarLabel" text="🙂 UserName"/>
-                <Button fx:id="settingsBtn" text="⚙"/>
-            </children>
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-padding: 15 25; -fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 0 0 1 0;">
+            <Label text="📘 IELTS Master" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <HBox alignment="CENTER" spacing="15">
+                <VBox alignment="CENTER_RIGHT">
+                    <Label fx:id="lblUsername" text="John Doe" style="-fx-font-weight: bold;"/>
+                    <Label fx:id="levelLabel" text="Intermediate Level" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+                </VBox>
+                <StackPane>
+                    <Circle radius="22" style="-fx-fill: #3498db;"/>
+                    <Label fx:id="avatarLabel" text="JD" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                </StackPane>
+                <Button fx:id="settingsBtn" text="⚙" style="-fx-font-size: 20px; -fx-background-color: transparent; -fx-padding: 0 5; -fx-cursor: hand;"/>
+            </HBox>
         </HBox>
     </top>
 
-    <!-- MAIN CONTENT -->
     <center>
-        <GridPane hgap="20" vgap="20" alignment="CENTER" BorderPane.alignment="CENTER">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <children>
-                <Button fx:id="btnLearningPath" text="📘 Learning Path" GridPane.rowIndex="0" GridPane.columnIndex="0" prefWidth="180" prefHeight="80"/>
-                <Button fx:id="btnVocabulary" text="📚 Vocabulary" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="180" prefHeight="80"/>
-                <Button fx:id="btnPractice" text="📝 Practice Test" GridPane.rowIndex="1" GridPane.columnIndex="0" prefWidth="180" prefHeight="80"/>
-                <Button fx:id="btnDictionary" text="🔍 Dictionary" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="180" prefHeight="80"/>
-                <Button fx:id="btnLeaderboard" text="🏆 Leaderboard" GridPane.rowIndex="2" GridPane.columnIndex="0" prefWidth="180" prefHeight="80"/>
-                <Button fx:id="btnProfile" text="👤 Profile" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="180" prefHeight="80"/>
-            </children>
-        </GridPane>
+        <ScrollPane fitToWidth="true" vbarPolicy="AS_NEEDED" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="25" style="-fx-padding: 25;">
+
+                <!-- ======================================= -->
+                <!-- SECTION 1: WELCOME & STATS (UPDATED)    -->
+                <!-- ======================================= -->
+                <Label text="Welcome Back, John!" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <GridPane hgap="20" vgap="20" style="-fx-padding: 15 0 0 0;">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="25"/>
+                    </columnConstraints>
+
+                    <!-- Call to Action Card -->
+                    <VBox spacing="8" style="-fx-background-color: #3498db; -fx-padding: 20; -fx-background-radius: 12;">
+                        <Label text="Continue your journey" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                        <Label fx:id="lblLastLesson" text="Lesson 3: Listening Deep Dive" style="-fx-font-size: 12px; -fx-text-fill: #ecf0f1;"/>
+                        <Pane VBox.vgrow="ALWAYS"/>
+                        <Button fx:id="btnContinueLearning" text="Resume Learning →" style="-fx-background-color: white; -fx-text-fill: #3498db; -fx-font-weight: bold; -fx-margin-top: 10;"/>
+                    </VBox>
+
+                    <!-- XP Card (with Progress Bar) -->
+                    <VBox spacing="5" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12;" GridPane.columnIndex="1">
+                        <Label text="⚡ Total XP" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="xpLabel" text="15,450" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                        <Pane VBox.vgrow="ALWAYS"/>
+                        <VBox spacing="5" style="-fx-padding: 10 0 0 0;">
+                            <ProgressBar fx:id="xpProgressBar" progress="0.6" prefWidth="200.0"/>
+                            <Label fx:id="lblNextLevelXp" text="2,550 XP to next level" style="-fx-font-size: 10px; -fx-text-fill: #7f8c8d;"/>
+                        </VBox>
+                    </VBox>
+
+                    <!-- Streak Card (with Visual Tracker) -->
+                    <VBox spacing="5" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12;" GridPane.columnIndex="2">
+                        <Label text="🔥 Streak" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+                        <Label fx:id="streakLabel" text="12 Days" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                        <Pane VBox.vgrow="ALWAYS"/>
+                        <VBox spacing="8" style="-fx-padding: 10 0 0 0;">
+                            <Label text="This Week's Progress" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #7f8c8d;"/>
+                            <HBox fx:id="streakBox" spacing="8" alignment="CENTER_LEFT">
+                                <!-- These will be populated from the controller -->
+                                <Circle radius="8" fill="#e74c3c"/>
+                                <Circle radius="8" fill="#e74c3c"/>
+                                <Circle radius="8" fill="#e74c3c"/>
+                                <Circle radius="8" fill="#bdc3c7"/>
+                                <Circle radius="8" fill="#e74c3c"/>
+                                <Circle radius="8" fill="#bdc3c7"/>
+                                <Circle radius="8" fill="#bdc3c7"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </GridPane>
+
+                <!-- ======================================= -->
+                <!-- SECTION 2: FEATURES                     -->
+                <!-- ======================================= -->
+                <Label text="Explore Features" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #34495e; -fx-padding: 15 0 0 0;"/>
+                <GridPane hgap="20" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                    </columnConstraints>
+
+                    <!-- Card 1: Learning Path -->
+                    <VBox fx:id="cardLearningPath" alignment="TOP_CENTER" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-cursor: hand;">
+                        <StackPane>
+                            <Region style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-background-color: #e9f5ff; -fx-background-radius: 25;"/>
+                            <SVGPath content="M10 25 L25 15 L40 25 L40 40 L25 50 L10 40 Z M25 15 L25 50 M10 40 L25 30 L40 40" stroke="#3498db" strokeWidth="2" fill="transparent" />
+                        </StackPane>
+                        <Label text="Learning Path" style="-fx-font-weight: bold;"/>
+                        <Label text="Follow a structured path to your goal." style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true; text-align: center;"/>
+                    </VBox>
+
+                    <!-- Card 2: Vocabulary Hub -->
+                    <VBox fx:id="cardVocabulary" alignment="TOP_CENTER" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-cursor: hand;" GridPane.columnIndex="1">
+                        <StackPane>
+                            <Region style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-background-color: #e8f6f3; -fx-background-radius: 25;"/>
+                            <SVGPath content="M15 10 H35 C40 10, 40 15, 40 15 V40 C40 45, 35 45, 35 45 H15 C10 45, 10 40, 10 40 V15 C10 10, 15 10, 15 10 Z M18 10 V45" stroke="#1abc9c" strokeWidth="2" fill="transparent"/>
+                        </StackPane>
+                        <Label text="Vocabulary Hub" style="-fx-font-weight: bold;"/>
+                        <Label text="Build and review your personal word bank." style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true; text-align: center;"/>
+                    </VBox>
+
+                    <!-- Card 3: Practice Hub -->
+                    <VBox fx:id="cardPractice" alignment="TOP_CENTER" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-cursor: hand;" GridPane.columnIndex="2">
+                        <StackPane>
+                            <Region style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-background-color: #fef5e7; -fx-background-radius: 25;"/>
+                            <SVGPath content="M15 35 L10 40 L15 45 L35 25 L30 20 Z M30 20 L15 35 M12 32 L18 38 M32 23 L20 35" stroke="#f39c12" strokeWidth="2" fill="transparent"/>
+                        </StackPane>
+                        <Label text="Practice Hub" style="-fx-font-weight: bold;"/>
+                        <Label text="Take mock tests and AI-powered drills." style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true; text-align: center;"/>
+                    </VBox>
+
+                    <!-- Card 4: Dictionary -->
+                    <VBox fx:id="cardDictionary" alignment="TOP_CENTER" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-cursor: hand;" GridPane.rowIndex="1">
+                        <StackPane>
+                            <Region style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-background-color: #f4ecf7; -fx-background-radius: 25;"/>
+                            <SVGPath content="M22 10 A12 12 0 1 1 22 34 A12 12 0 1 1 22 10 Z M32 32 L40 40" stroke="#9b59b6" strokeWidth="2" fill="transparent"/>
+                        </StackPane>
+                        <Label text="Dictionary" style="-fx-font-weight: bold;"/>
+                        <Label text="Look up any English word instantly." style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true; text-align: center;"/>
+                    </VBox>
+
+                    <!-- Card 5: Leaderboard -->
+                    <VBox fx:id="cardLeaderboard" alignment="TOP_CENTER" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-cursor: hand;" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                        <StackPane>
+                            <Region style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-background-color: #fdedec; -fx-background-radius: 25;"/>
+                            <SVGPath content="M10 40 H40 V35 C40 30, 35 25, 30 25 H20 C15 25, 10 30, 10 35 Z M25 25 V10 M20 15 H30" stroke="#e74c3c" strokeWidth="2" fill="transparent"/>
+                        </StackPane>
+                        <Label text="Leaderboard" style="-fx-font-weight: bold;"/>
+                        <Label text="Compete with other learners." style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true; text-align: center;"/>
+                    </VBox>
+
+                    <!-- Card 6: Profile -->
+                    <VBox fx:id="cardProfile" alignment="TOP_CENTER" spacing="12" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-cursor: hand;" GridPane.rowIndex="1" GridPane.columnIndex="2">
+                        <StackPane>
+                            <Region style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-background-color: #e5e8e8; -fx-background-radius: 25;"/>
+                            <SVGPath content="M25 20 A10 10 0 1 1 25 20 Z M10 45 C10 35, 40 35, 40 45" stroke="#34495e" strokeWidth="2" fill="transparent"/>
+                        </StackPane>
+                        <Label text="My Profile" style="-fx-font-weight: bold;"/>
+                        <Label text="View your stats and achievements." style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d; -fx-wrap-text: true; text-align: center;"/>
+                    </VBox>
+                </GridPane>
+
+            </VBox>
+        </ScrollPane>
     </center>
-
-    <!-- FOOTER -->
-    <bottom>
-        <HBox spacing="40" alignment="CENTER" style="-fx-background-color: #f0f0f0; -fx-font-size: 14px;">
-            <children>
-                <Label fx:id="xpLabel" text="XP: 1200"/>
-                <Label fx:id="streakLabel" text="🔥 Streak: 5"/>
-                <Label fx:id="levelLabel" text="Level: Intermediate"/>
-            </children>
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-        </HBox>
-    </bottom>
-
 </BorderPane>
+

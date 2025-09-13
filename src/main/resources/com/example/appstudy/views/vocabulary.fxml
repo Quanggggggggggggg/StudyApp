@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.appstudy.Controller.VocabularyController"
+            style="-fx-background-color: #f4f7f9;"
+            prefWidth="900" prefHeight="700">
+
+    <top>
+        <VBox style="-fx-padding: 20 25 15 25;">
+            <Button fx:id="backBtn" text="← Quay lại" onAction="#goBack" />
+            <Label text="📚 My Vocabulary Hub"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+            <Label text="Manage, review, and master your IELTS vocabulary."
+                   style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 0 25 25 25;">
+
+            <!-- SECTION 1: DASHBOARD TIẾN TRÌNH -->
+            <HBox spacing="20">
+                <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 15; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                    <Label text="WORDS LEARNED" style="-fx-font-size: 12px; -fx-text-fill: #3498db; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblWordsLearned" text="128" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+                <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 15; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                    <Label text="TO REVIEW TODAY" style="-fx-font-size: 12px; -fx-text-fill: #e67e22; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblWordsToReview" text="15" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+                <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-padding: 15; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                    <Label text="MASTERED" style="-fx-font-size: 12px; -fx-text-fill: #27ae60; -fx-font-weight: bold;"/>
+                    <Label fx:id="lblWordsMastered" text="42" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                </VBox>
+            </HBox>
+
+            <!-- SECTION 2: NÚT HÀNH ĐỘNG -->
+            <Button text="🚀 Start Daily Review (15 words)" onAction="#startDailyReview"
+                    prefWidth="Infinity" prefHeight="45"
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8;"/>
+
+            <!-- SECTION 3: BỘ LỌC VÀ TÌM KIẾM -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10, 0, 0, 2);">
+                <Label text="Explore Your Word List" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <HBox spacing="10">
+                    <TextField fx:id="txtSearchWord" promptText="Search your words..." HBox.hgrow="ALWAYS" prefHeight="35"/>
+                    <ComboBox fx:id="comboTopicFilter" promptText="All Topics" prefHeight="35"/>
+                    <ComboBox fx:id="comboStatusFilter" promptText="All Status" prefHeight="35"/>
+                    <Button text="Filter" onAction="#filterWords" prefHeight="35"/>
+                </HBox>
+            </VBox>
+
+            <!-- SECTION 4: DANH SÁCH TỪ VỰNG -->
+            <ScrollPane fx:id="scrollPaneWords" fitToWidth="true" vbarPolicy="AS_NEEDED"
+                        style="-fx-background-color: transparent; -fx-background: transparent;">
+                <VBox fx:id="vboxWordList" spacing="10">
+                    <!-- Các thẻ từ vựng (word cards) sẽ được thêm vào đây bằng code -->
+                </VBox>
+            </ScrollPane>
+
+        </VBox>
+    </center>
+</BorderPane>
